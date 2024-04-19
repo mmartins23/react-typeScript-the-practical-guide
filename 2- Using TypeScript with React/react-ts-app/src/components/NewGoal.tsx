@@ -1,6 +1,10 @@
 import { useRef, FormEvent } from "react";
 
-const NewGoal = () => {
+interface INewGoal {
+    onAddGoal: (goal: string, summary: string) => void;
+}
+
+const NewGoal = ({ onAddGoal }: INewGoal) => {
     const goal = useRef<HTMLInputElement>(null);
     const summary = useRef<HTMLInputElement>(null);
 
@@ -10,7 +14,10 @@ const NewGoal = () => {
         const enteredGoal = goal.current!.value;
         const enteredSummary = summary.current!.value;
 
+        e.currentTarget.reset();
+        onAddGoal(enteredGoal, enteredSummary);
     }
+
     return (
         <form onSubmit={handleSubmit}>
             <p>
