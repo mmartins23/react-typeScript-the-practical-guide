@@ -1,10 +1,12 @@
 // Components
 import Header from './components/Header';
 import goalsImg from '../src/assets/download.png';
+import CourseGoalList from './components/CourseGoalList';
+import NewGoal from './components/NewGoal';
 
 // Hooks
 import { useState } from 'react';
-import CourseGoalList from './components/CourseGoalList';
+
 
 export interface ICourseGoal {
   title: string;
@@ -36,7 +38,7 @@ function App() {
       <Header image={{ src: goalsImg, alt: 'A list of goals' }}>
         <h1>Your Course Goals</h1>
       </Header>
-      <button onClick={handleAddGoal}>Add Goal</button>
+      <NewGoal/>
       <CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
     </main>
   );
