@@ -1,10 +1,11 @@
 // Components
 import CourseGoal from "./CourseGoal";
 import InfoBox from "./InfoBox";
+import { ReactNode } from "react";
+
 
 // interfaces
 import { ICourseGoal } from '../App';
-import { ReactNode } from "react";
 
 
 interface ICourseGoalListProps {
@@ -25,7 +26,7 @@ const CourseGoalList = ({ goals, onDeleteGoal }: ICourseGoalListProps) => {
 
     if (goals.length >= 4) {
         warningBox = (
-            <InfoBox mode="warning">
+            <InfoBox mode="warning" severity="high">
                 You're collecting a lot of goals. Don't put too much on your plate!
             </InfoBox>
         );
