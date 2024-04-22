@@ -1,9 +1,15 @@
-type Props = {}
-
-const Input = (props: Props) => {
-  return (
-    <div>Input</div>
-  )
+type InputProps = {
+    label: string;
+    id: string;
 }
 
-export default Input
+const Input = ({ label, id }: InputProps) => {
+    return (
+        <p>
+            <label htmlFor={id}>{label}</label>
+            <input id={id} type="text" />
+        </p>
+    )
+}
+
+export default Input;
