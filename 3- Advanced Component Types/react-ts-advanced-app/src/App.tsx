@@ -6,6 +6,12 @@ import Form from "./components/Form";
 
 function App() {
   const input = useRef<HTMLInputElement>(null);
+
+  const handleSave = (data: unknown) => {
+    const extractedData = data as {name: string; age: string;};
+    console.log(extractedData);
+
+  }
   return (
     <main>
       <Input label="Your name" id="name" type="text" />
@@ -25,10 +31,10 @@ function App() {
 
       <Input label="Test" id="test" ref={input} />
 
-      <Form>
+      <Form onSave={handleSave}>
         <Input label="Name" id="name" type="text"/>
         <Input label="Age" id="age" type="number"/>
-        <button>Click me</button>
+        <button>Save Data</button>
       </Form>
     </main>
 
