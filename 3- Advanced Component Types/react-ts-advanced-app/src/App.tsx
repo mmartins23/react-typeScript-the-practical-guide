@@ -4,14 +4,23 @@ import Input from "./components/Input";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Input label="Your name" id="name" type="text" />
       <Input label="Your age" id="age" type="number" />
       <p><Button el="button">Button</Button></p>
       <p><Button el="anchor" href="https://google.com">A Link</Button></p>
       <Container as="hr"/>
-      <Container as={Button}/>
-    </div>
+
+      {/* Using Container with different HTML elements */}
+      <Container as="div" style={{ border: '1px solid black' }}>
+        <p>This is a paragraph inside a div Container</p>
+      </Container>
+
+      <Container as="section">
+        <h1>Hello, World!</h1>
+      </Container>
+    </>
+
   );
 }
 
