@@ -1,10 +1,24 @@
-import { ComponentPropsWithoutRef, FormEvent } from "react"
+import { ComponentPropsWithoutRef, FormEvent, forwardRef, useImperativeHandle, useRef } from "react"
 
 type FormProps = ComponentPropsWithoutRef<'form'> & {
     onSave: (value: unknown) => void;
 }
 
-const Form = ({onSave, children, ...otherProps}: FormProps) => {
+export type FormHandle = {
+    clear: () => void;
+};
+
+const Form = forwardRef<FormHandle, FormProps>(({ onSave, children, ...otherProps }, ref) => {
+
+    const form = useRef<HTMLFormElement>(null);
+
+    useImperativeHandle(ref, () => {
+        return {
+            clear() {
+                form.current?.reset();
+            }
+        }
+    });
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -15,9 +29,11 @@ const Form = ({onSave, children, ...otherProps}: FormProps) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} {...otherProps}>
+        <form onSubmit={handleSubmit} {...otherProps} ref={form}>
             {children}
-        </form>)
-}
+        </form>
+    )
+});
+
 
 export default Form;
