@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Button from "./components/Button";
 import Container from "./components/Container";
 import Input from "./components/Input";
+import Form from "./components/Form";
 
 function App() {
   const input = useRef<HTMLInputElement>(null);
@@ -23,6 +24,12 @@ function App() {
       </Container>
 
       <Input label="Test" id="test" ref={input} />
+
+      <Form>
+        <Input label="Name" id="name" type="text"/>
+        <Input label="Age" id="age" type="number"/>
+        <button>Click me</button>
+      </Form>
     </main>
 
   );
